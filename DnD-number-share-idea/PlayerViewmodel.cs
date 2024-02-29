@@ -8,20 +8,16 @@ using System.ComponentModel;
 
 namespace DnD_number_share_idea
 {
+    public class SessionData
+    {
+        public ObservableCollection<Player> Players { get; set; } = new ObservableCollection<Player>();
+        public ObservableCollection<NPC> NPCs { get; set; } = new ObservableCollection<NPC>();
+        public ObservableCollection<Note> Notes { get; set; } = new ObservableCollection<Note>();
+        // Additional properties as needed, e.g., session date, etc.
+    }
     public class MainViewModel
     {
-        public PlayerViewModel PlayerViewModel { get; set; }
-        public NPCViewModel NPCViewModel { get; set; }
-        public NoteViewModel NoteViewModel { get; set; }
-
-        public MainViewModel()
-        {
-            PlayerViewModel = new PlayerViewModel();
-            NPCViewModel = new NPCViewModel();
-            NoteViewModel = new NoteViewModel();
-        }
-
-        // Add any application-wide logic or methods needed
+        public SessionData SessionData { get; set; } = new SessionData();
     }
     public class NPCViewModel
     {
@@ -68,15 +64,12 @@ namespace DnD_number_share_idea
     {
         public ObservableCollection<Player> Players { get; set; }
 
-        public PlayerViewModel()
-        {
-            Players = new ObservableCollection<Player>();
-            AddPlayer(new Player("John Doe", "Eldrin", "Wizard", 5, 10, 14, 15, 18, 12, 10, "Quick learner"));
-        }
+        
 
         public void AddPlayer(Player player)
         {
             Players.Add(player);
+
         }
 
         public void RemovePlayer(Player player)

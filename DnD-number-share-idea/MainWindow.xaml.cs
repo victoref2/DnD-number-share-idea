@@ -21,15 +21,7 @@ namespace DnD_number_share_idea
 {
 
 
-    public class SessionData
-    {
-        public ObservableCollection<Player> Players { get; set; } = new ObservableCollection<Player>();
-        public ObservableCollection<NPC> NPCs { get; set; } = new ObservableCollection<NPC>();
-        public ObservableCollection<Note> Notes { get; set; } = new ObservableCollection<Note>();
-        // Additional properties as needed, e.g., session date, etc.
-    }
-
-
+   
     public partial class MainWindow : Window
     {
         public string currentSessionFilePath;

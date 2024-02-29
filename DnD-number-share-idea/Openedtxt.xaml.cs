@@ -25,7 +25,42 @@ namespace DnD_number_share_idea
             DataContext = new MainViewModel();
 
         }
-        
+
+        private void AddNewPlayer_Click(object sender, RoutedEventArgs e)
+        {
+            AddPlayer(new Player("John Doe", "Eldrin", "Wizard", 5, 10, 14, 15, 18, 12, 10, "Quick learner"));
+            // Assuming DataContext is of type MainViewModel which contains Players collection
+            var vm = DataContext as MainViewModel;
+            vm?.Players.Add(new Player
+            {
+                Name = "New Player",
+                CharacterName = "Unknown",
+                CLass = "Class",
+                Level = 1,
+                            AddPlayer(new Player("John Doe", "Eldrin", "Wizard", 5, 10, 14, 15, 18, 12, 10, "Quick learner"));
+                // Add other default properties as needed
+            });
+        }
+
+        private void AddNewNPC_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = DataContext as MainViewModel;
+            vm?.NPCs.Add(new NPC
+            {
+                NPCName = "New NPC",
+                NPCDescription = "Description"
+            });
+        }
+
+        private void AddNewNote_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = DataContext as MainViewModel;
+            vm?.Notes.Add(new Note
+            {
+                Title = "New Note",
+                Content = "Content"
+            });
+        }
 
     }
 }
