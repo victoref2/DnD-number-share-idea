@@ -1,0 +1,42 @@
+﻿<Window x:Class="DnD_number_share_idea.Openedtxt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DnD_number_share_idea"
+        mc:Ignorable="d"
+        Title="Openedtxt" Height="450" Width="800">
+    <Window.DataContext>
+        <local:PlayerViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <TabControl ItemsSource="{Binding Players}">
+            <TabControl.ItemTemplate>
+                <!-- This defines the header of each tab (player's character name) -->
+                <DataTemplate>
+                    <TextBlock Text="{Binding CharacterName}" />
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <!-- This defines the content within each tab -->
+                <DataTemplate>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Class}" FontStyle="Italic"/>
+                            <TextBlock Text="Level: {Binding Level}"/>
+                            <!-- Add additional player attributes here -->
+                            <TextBlock Text="Strength: {Binding Str}"/>
+                            <TextBlock Text="Dexterity: {Binding Dex}"/>
+                            <TextBlock Text="Constitution: {Binding Con}"/>
+                            <TextBlock Text="Intelligence: {Binding Int}"/>
+                            <TextBlock Text="Wisdom: {Binding Wis}"/>
+                            <TextBlock Text="Charisma: {Binding Cha}"/>
+                            <TextBlock Text="Notes: {Binding Notes}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+    </Grid>
+</Window>

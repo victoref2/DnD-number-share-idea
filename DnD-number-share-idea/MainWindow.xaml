@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DnD_number_share_idea"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="600">
     <Grid>
-        <Button x:Name="Player_button" Content="Player" HorizontalAlignment="Left" Margin="46,106,0,0" VerticalAlignment="Top" Height="292" Width="306" FontSize="72" FontWeight="Bold"/>
-        <Button x:Name="Dungeon_master_button" Content="DM" HorizontalAlignment="Left" Margin="454,106,0,0" VerticalAlignment="Top" Height="292" Width="306" FontSize="72" FontWeight="Bold"/>
+        <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Height="210" Width="255" Click="BtnLoad_Click"/>
+        <Button x:Name="btnNew" Content="New" HorizontalAlignment="Left" Margin="335,107,0,0" VerticalAlignment="Top" Height="210" Width="255" Click="BtnNew_Click"/>
 
     </Grid>
 </Window>
