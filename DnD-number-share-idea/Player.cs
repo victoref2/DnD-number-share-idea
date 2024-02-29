@@ -7,11 +7,77 @@ using System.ComponentModel;
 
 namespace DnD_number_share_idea
 {
+    public class NPC : INotifyPropertyChanged
+    {
+        private string name;
+        private string description;
+
+        public string NPCName
+        {
+            get => name;
+            set
+            {
+                name = value;
+                OnPropertyChanged(nameof(NPCName));
+            }
+        }
+
+        public string NPCDescription
+        {
+            get => description;
+            set
+            {
+                description = value;
+                OnPropertyChanged(nameof(NPCDescription));
+            }
+        }
+
+        // INotifyPropertyChanged implementation
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+    public class Note : INotifyPropertyChanged
+    {
+        private string title;
+        private string content;
+
+        public string Title
+        {
+            get => title;
+            set
+            {
+                title = value;
+                OnPropertyChanged(nameof(Title));
+            }
+        }
+
+        public string Content
+        {
+            get => content;
+            set
+            {
+                content = value;
+                OnPropertyChanged(nameof(Content));
+            }
+        }
+
+        // INotifyPropertyChanged implementation
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
     public class Player : INotifyPropertyChanged
     {
         private string name;
         private string characterName;
-        private string playerClass;
+        private string Class;
         private int level;
         public string Name
         {
@@ -32,13 +98,13 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(CharacterName));
             }
         }
-        public string PlayerClass
+        public string CLass
         {
-            get => playerClass;
+            get => Class;
             set
             {
-                playerClass = value;
-                OnPropertyChanged(nameof(PlayerClass));
+                Class = value;
+                OnPropertyChanged(nameof(CLass));
             }
         }
         private int str;
@@ -93,7 +159,7 @@ namespace DnD_number_share_idea
             {
                 wis = value;
                 OnPropertyChanged(nameof(Wis));
-            }
+            } 
         }
 
         private int cha; // Adjust naming convention to Cha for consistency
@@ -128,11 +194,11 @@ namespace DnD_number_share_idea
         }
 
         // Constructor for easy instantiation
-        public Player(string name, string characterName, string playerClass, int level, int str, int Dex, int Con, int INt,int Wis, int Cha, String Featsbonus)
+        public Player(string name, string characterName, string Class, int level, int str, int Dex, int Con, int INt,int Wis, int Cha, String Featsbonus)
         {
             Name = name;
             CharacterName = characterName;
-            PlayerClass = playerClass;
+            Class = CLass;
             Level = level;
             Str = str;
             dex = Dex;

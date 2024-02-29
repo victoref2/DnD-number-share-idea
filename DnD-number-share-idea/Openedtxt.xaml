@@ -7,33 +7,58 @@
         mc:Ignorable="d"
         Title="Openedtxt" Height="450" Width="800">
     <Grid>
-        <TabControl ItemsSource="{Binding Players}">
-            <TabControl.ItemTemplate>
-                <!-- This defines the header of each tab (player's character name) -->
-                <DataTemplate>
-                    <TextBlock Text="{Binding CharacterName}" />
-                </DataTemplate>
-            </TabControl.ItemTemplate>
-            <TabControl.ContentTemplate>
-                <!-- This defines the content within each tab -->
-                <DataTemplate>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="10">
-                            <TextBox Text="{Binding Name, Mode=TwoWay}" FontWeight="Bold"/>
-                            <TextBox Text="{Binding Class, Mode=TwoWay}" FontStyle="Italic"/>
-                            <TextBox Text="{Binding Level, Mode=TwoWay}" />
-                            <!-- Editable player attributes -->
-                            <TextBox Text="{Binding Str, Mode=TwoWay}" />
-                            <TextBox Text="{Binding Dex, Mode=TwoWay}" />
-                            <TextBox Text="{Binding Con, Mode=TwoWay}" />
-                            <TextBox Text="{Binding Int, Mode=TwoWay}" />
-                            <TextBox Text="{Binding Wis, Mode=TwoWay}" />
-                            <TextBox Text="{Binding Cha, Mode=TwoWay}" />
-                            <TextBox Text="{Binding Notes, Mode=TwoWay}" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </ScrollViewer>
-                </DataTemplate>
-            </TabControl.ContentTemplate>
+        <TabControl>
+            <TabItem Header="Players">
+                <ListView ItemsSource="{Binding Players}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <!-- Player details template -->
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding CharacterName}"/>
+                                <!-- Add more player details here -->
+                                    <TextBox Text="{Binding Class}" Width="200"/>
+                                    <TextBox Text="{Binding Level}" Width="50"/>
+                                    <TextBox Text="{Binding Str}" Width="50"/>
+                                    <TextBox Text="{Binding Dex}" Width="50"/>
+                                    <TextBox Text="{Binding Con}" Width="50"/>
+                                    <TextBox Text="{Binding Int}" Width="50"/>
+                                    <TextBox Text="{Binding Wis}" Width="50"/>
+                                <TextBox Text="{Binding Cha}" Width="50"/>
+                                <TextBox Text="{Binding Notes}" Width="200" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem Header="NPCs">
+                <ListView ItemsSource="{Binding NPCs}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <!-- NPC details template -->
+                            <StackPanel>
+                                <TextBlock Text="{Binding NPCName}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding NPCDescription}"/>
+                                <!-- Add more NPC details here -->
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Notes">
+                <ListView ItemsSource="{Binding Notes}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <!-- Note details template -->
+                            <StackPanel>
+                                <TextBlock Text="{Binding Title}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Content}"/>
+                                <!-- Add more note details here -->
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
