@@ -55,7 +55,11 @@ namespace DnD_number_share_idea
             if (saveFileDialog.ShowDialog() == true)
             {
                 CreateNewSession(saveFileDialog.FileName);
+                var openedTxtWindow = new Openedtxt();
+                openedTxtWindow.Show();
+
             }
+
         }
 
         private void CreateNewSession(string filePath)

@@ -22,6 +22,8 @@ namespace DnD_number_share_idea
         public Openedtxt()
         {
             InitializeComponent();
+            DataContext = new PlayerViewModel();
+
         }
     }
 }
