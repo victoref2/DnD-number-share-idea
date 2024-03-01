@@ -27,12 +27,18 @@ namespace DnD_number_share_idea
         public string currentSessionFilePath;
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!string.IsNullOrEmpty(currentSessionFilePath) && this.DataContext is SessionData sessionData)
+            if (!string.IsNullOrEmpty(currentSessionFilePath))
             {
-                string json = JsonConvert.SerializeObject(sessionData, Formatting.Indented);
-                File.WriteAllText(currentSessionFilePath, json);
+                // Access the MainViewModel instance from DataContext
+                var viewModel = this.DataContext as MainViewModel;
+                if (viewModel != null)
+                {
+                    string json = JsonConvert.SerializeObject(viewModel.SessionData, Formatting.Indented);
+                    File.WriteAllText(currentSessionFilePath, json);
+                }
             }
         }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -60,19 +66,22 @@ namespace DnD_number_share_idea
 
         private void LoadSessionData(string filePath)
         {
-            try
+            string json = File.ReadAllText(filePath);
+            var sessionData = JsonConvert.DeserializeObject<SessionData>(json);
+
+            var viewModel = this.DataContext as MainViewModel;
+            if (viewModel != null && sessionData != null)
             {
-                string json = File.ReadAllText(filePath);
-                var sessionData = JsonConvert.DeserializeObject<SessionData>(json);
-                var openedTxtWindow = new Openedtxt();
-                openedTxtWindow.DataContext = sessionData; // Set DataContext to the loaded session
+                viewModel.SessionData = sessionData;
+
+                // Open the Openedtxt window here
+                Openedtxt openedTxtWindow = new Openedtxt();
+                openedTxtWindow.DataContext = viewModel; // Pass the MainViewModel instance to the new window
                 openedTxtWindow.Show();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to load session data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
+
+
 
 
         // Event handler for the New button
@@ -104,8 +113,9 @@ namespace DnD_number_share_idea
             File.WriteAllText(filePath, json);
 
             currentSessionFilePath = filePath;
-            LoadSessionData(filePath); // Load the new session data into the application
+            LoadSessionData(filePath); // This method should open the Openedtxt window as shown above
         }
+
 
     }
 }

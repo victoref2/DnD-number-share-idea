@@ -8,17 +8,70 @@ using System.ComponentModel;
 
 namespace DnD_number_share_idea
 {
-    public class SessionData
-    {
-        public ObservableCollection<Player> Players { get; set; } = new ObservableCollection<Player>();
-        public ObservableCollection<NPC> NPCs { get; set; } = new ObservableCollection<NPC>();
-        public ObservableCollection<Note> Notes { get; set; } = new ObservableCollection<Note>();
-        // Additional properties as needed, e.g., session date, etc.
-    }
-    public class MainViewModel
-    {
+        public class SessionData : INotifyPropertyChanged
+        {
+
+            private ObservableCollection<Player> _players = new ObservableCollection<Player>();
+            public ObservableCollection<Player> Players
+            {
+                get => _players;
+                set
+                {
+                    _players = value;
+                    OnPropertyChanged(nameof(Players));
+                }
+            }
+
+            private ObservableCollection<NPC> _npcs = new ObservableCollection<NPC>();
+            public ObservableCollection<NPC> NPCs
+            {
+                get => _npcs;
+                set
+                {
+                    _npcs = value;
+                    OnPropertyChanged(nameof(NPCs));
+                }
+            }
+
+            private ObservableCollection<Note> _notes = new ObservableCollection<Note>();
+            public ObservableCollection<Note> Notes
+            {
+                get => _notes;
+                set
+                {
+                    _notes = value;
+                    OnPropertyChanged(nameof(Notes));
+                }
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            protected virtual void OnPropertyChanged(string propertyName)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    
+    
+        public class MainViewModel : INotifyPropertyChanged
+        {
         public SessionData SessionData { get; set; } = new SessionData();
-    }
+
+        // Assuming SessionData has ObservableCollection properties for Players, NPCs, and Notes
+        public ObservableCollection<Player> Players => SessionData.Players;
+        public ObservableCollection<NPC> NPCs => SessionData.NPCs;
+        public ObservableCollection<Note> Notes => SessionData.Notes;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+            protected virtual void OnPropertyChanged(string propertyName = null)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+ 
+
+
     public class NPCViewModel
     {
         public ObservableCollection<NPC> NPCs { get; set; }

@@ -9,64 +9,104 @@
     <Grid>
         <TabControl>
             <TabItem Header="Players">
-                <StackPanel>
-                    <Button Content="Add New Player" Margin="5" Padding="3" HorizontalAlignment="Left" Click="AddNewPlayer_Click"/>
-                       <ListView ItemsSource="{Binding Players}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <Button Content="Add New Player" Margin="5" Padding="3" HorizontalAlignment="Left" Click="AddNewPlayer_Click"/>
+                        <ListView ItemsSource="{Binding Players}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <!-- Player details template -->
                                     <StackPanel>
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding CharacterName}"/>
-                                        <!-- Add more player details here -->
-                                        <TextBox Text="{Binding Class}" Width="200"/>
-                                        <TextBox Text="{Binding Level}" Width="50"/>
-                                        <TextBox Text="{Binding Str}" Width="50"/>
-                                        <TextBox Text="{Binding Dex}" Width="50"/>
-                                        <TextBox Text="{Binding Con}" Width="50"/>
-                                        <TextBox Text="{Binding Int}" Width="50"/>
-                                        <TextBox Text="{Binding Wis}" Width="50"/>
-                                        <TextBox Text="{Binding Cha}" Width="50"/>
-                                        <TextBox Text="{Binding Notes}" Width="200" TextWrapping="Wrap"/>
+                                        <TextBlock Text="Name:" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+
+                                        <TextBlock Text="Character Name:" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding CharacterName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+
+                                        <TextBlock Text="Class:" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding PlayerClass, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+
+                                        <TextBlock Text="Level:" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding Level, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+
+                                        <!-- Repeat the pattern for Str, Dex, Con, Int, Wis, Cha with labels -->
+                                        <!-- Example for Str: -->
+                                        <TextBlock Text="Strength (Str):" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding Str, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+
+                                        <!-- Repeat for Dex, Con, Int, Wis, Cha -->
+                                        <TextBlock Text="Dexterity (Dex):" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding Dex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+
+                                        <TextBlock Text="Constitution (Con):" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding Con, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+
+                                        <TextBlock Text="Intelligence (Int):" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding INt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+
+                                        <TextBlock Text="Wisdom (Wis):" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding Wis, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+
+                                        <TextBlock Text="Charisma (Cha):" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding Cha, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+
+                                        <TextBlock Text="Player Notes:" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding Pnotes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                       </ListView>
-                </StackPanel>
+                        </ListView>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="NPCs">
-                <StackPanel>
-                    <Button Content="Add New NPC" Margin="5" Padding="3" HorizontalAlignment="Left" Click="AddNewNPC_Click"/>
-                    <ListView ItemsSource="{Binding NPCs}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <!-- NPC details template -->
-                                <StackPanel>
-                                    <TextBlock Text="{Binding NPCName}" FontWeight="Bold"/>
-                                    <TextBlock Text="{Binding NPCDescription}"/>
-                                    <!-- Add more NPC details here -->
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <Button Content="Add New NPC" Margin="5" Padding="3" HorizontalAlignment="Left" Click="AddNewNPC_Click"/>
+                        <ListView ItemsSource="{Binding NPCs}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <!-- NPC details template -->
+                                    <StackPanel>
+
+                                        <TextBlock Text="NPC name:" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding NPCName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
+
+                                        <TextBlock Text="NPC description:" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding NPCDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
+
+                                        <!-- Add more NPC details here -->
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Notes">
-                <StackPanel>
-                    <Button Content="Add New Note" Margin="5" Padding="3" HorizontalAlignment="Left" Click="AddNewNote_Click"/>
-                    <ListView ItemsSource="{Binding Notes}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <!-- Note details template -->
-                                <StackPanel>
-                                    <TextBlock Text="{Binding Title}" FontWeight="Bold"/>
-                                    <TextBlock Text="{Binding Content}"/>
-                                    <!-- Add more note details here -->
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <Button Content="Add New Note" Margin="5" Padding="3" HorizontalAlignment="Left" Click="AddNewNote_Click"/>
+                        <ListView ItemsSource="{Binding Notes}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <!-- Note details template -->
+                                    <StackPanel>
+
+                                        <TextBlock Text="Title:" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
+
+
+                                        <TextBlock Text="Note:" FontWeight="Bold"/>
+                                        <TextBox Text="{Binding Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
+
+                                        <!-- Add more note details here -->
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
     </Grid>

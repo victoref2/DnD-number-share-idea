@@ -28,39 +28,59 @@ namespace DnD_number_share_idea
 
         private void AddNewPlayer_Click(object sender, RoutedEventArgs e)
         {
-            AddPlayer(new Player("John Doe", "Eldrin", "Wizard", 5, 10, 14, 15, 18, 12, 10, "Quick learner"));
-            // Assuming DataContext is of type MainViewModel which contains Players collection
             var vm = DataContext as MainViewModel;
-            vm?.Players.Add(new Player
+            if (vm != null)
             {
-                Name = "New Player",
-                CharacterName = "Unknown",
-                CLass = "Class",
-                Level = 1,
-                            AddPlayer(new Player("John Doe", "Eldrin", "Wizard", 5, 10, 14, 15, 18, 12, 10, "Quick learner"));
-                // Add other default properties as needed
-            });
+                // Example of creating a new Player with default values for all constructor parameters
+                Player newPlayer = new Player(
+                    name: "New Player",
+                    characterName: "Unknown Character",
+                    CLass: "Class Placeholder",
+                    level: 1,
+                    str: 10,
+                    Dex: 10,
+                    Con: 10,
+                    Int: 10,
+                    Wis: 10,
+                    Cha: 10,
+                    pnotes: "Notes Placeholder"
+                );
+                vm.Players.Add(newPlayer);
+            }
         }
+
+
 
         private void AddNewNPC_Click(object sender, RoutedEventArgs e)
         {
             var vm = DataContext as MainViewModel;
-            vm?.NPCs.Add(new NPC
+            if (vm != null)
             {
-                NPCName = "New NPC",
-                NPCDescription = "Description"
-            });
+                vm.SessionData.NPCs.Add(new NPC
+                {
+                    NPCName = "New NPC",
+                    NPCDescription = "Description"
+                });
+            }
         }
 
         private void AddNewNote_Click(object sender, RoutedEventArgs e)
         {
+            // Assuming there's a similar method for adding a new Note
+            // and the SessionData property in MainViewModel properly exposes the Notes collection
             var vm = DataContext as MainViewModel;
-            vm?.Notes.Add(new Note
+            if (vm != null)
             {
-                Title = "New Note",
-                Content = "Content"
-            });
+                vm.SessionData.Notes.Add(new Note
+                {
+                    Title = "New Note",
+                    Content = "Note content"
+                });
+            }
         }
 
     }
+
+
 }
+

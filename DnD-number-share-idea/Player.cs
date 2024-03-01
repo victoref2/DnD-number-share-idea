@@ -77,7 +77,7 @@ namespace DnD_number_share_idea
     {
         private string name;
         private string characterName;
-        private string Class;
+        private string playerClass;
         private int level;
         public string Name
         {
@@ -98,13 +98,13 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(CharacterName));
             }
         }
-        public string CLass
+        public string PlayerClass // Corrected to match common naming conventions
         {
-            get => Class;
+            get => playerClass;
             set
             {
-                Class = value;
-                OnPropertyChanged(nameof(CLass));
+                playerClass = value;
+                OnPropertyChanged(nameof(PlayerClass)); // Changed to "PlayerClass"
             }
         }
         private int str;
@@ -141,13 +141,13 @@ namespace DnD_number_share_idea
         }
 
         private int intelligence; // Already correctly named
-        public int Int
+        public int INt
         {
             get => intelligence;
             set
             {
                 intelligence = value;
-                OnPropertyChanged(nameof(Int));
+                OnPropertyChanged(nameof(INt));
             }
         }
 
@@ -182,31 +182,31 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(Level));
             }
         }
-        private string notes;
-        public string Notes
+        private string pnotes;
+        public string Pnotes // Renamed from 'Notes' to 'Pnotes'
         {
-            get => notes;
+            get => pnotes;
             set
             {
-                notes = value;
-                OnPropertyChanged(nameof(Notes));
+                pnotes = value;
+                OnPropertyChanged(nameof(Pnotes)); // Reflect the property name change
             }
         }
 
         // Constructor for easy instantiation
-        public Player(string name, string characterName, string Class, int level, int str, int Dex, int Con, int INt,int Wis, int Cha, String Featsbonus)
+        public Player(string name, string characterName, string CLass, int level, int str, int Dex, int Con, int Int,int Wis, int Cha, String pnotes)
         {
             Name = name;
             CharacterName = characterName;
-            Class = CLass;
+            PlayerClass = CLass;
             Level = level;
             Str = str;
             dex = Dex;
             con = Con;
-            Int = INt;
+            INt = Int;
             wis = Wis;
             cha = Cha;
-            notes = Featsbonus;
+            Pnotes = pnotes;
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
