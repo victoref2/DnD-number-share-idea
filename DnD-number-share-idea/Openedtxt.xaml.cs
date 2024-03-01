@@ -16,6 +16,7 @@ namespace DnD_number_share_idea
 {
     /// <summary>
     /// Interaction logic for Openedtxt.xaml
+    /// this window is the Loaded info from the .json file or the new File made as a .Json
     /// </summary>
     public partial class Openedtxt : Window
     {
