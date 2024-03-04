@@ -37,6 +37,8 @@ namespace DnD_number_share_idea
                     name: "New Player",
                     characterName: "Unknown Character",
                     CLass: "Class Placeholder",
+                    maxHP: 10,
+                    currentHP: 10,
                     level: 1,
                     str: 10,
                     Dex: 10,

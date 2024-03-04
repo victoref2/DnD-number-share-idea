@@ -192,14 +192,37 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(Pnotes)); // Reflect the property name change
             }
         }
+        private int _currentHP;
+        public int CurrentHP
+        {
+            get => _currentHP;
+            set
+            {
+                _currentHP = value;
+                OnPropertyChanged(nameof(CurrentHP));
+            }
+        }
+
+        private int _maxHP;
+        public int MaxHP
+        {
+            get => _maxHP;
+            set
+            {
+                _maxHP = value;
+                OnPropertyChanged(nameof(MaxHP));
+            }
+        }
 
         // Constructor for easy instantiation
-        public Player(string name, string characterName, string CLass, int level, int str, int Dex, int Con, int Int,int Wis, int Cha, String pnotes)
+        public Player(string name, string characterName, string CLass, int level, int str, int Dex, int Con, int Int,int Wis, int Cha, String pnotes, int currentHP, int maxHP)
         {
             Name = name;
             CharacterName = characterName;
             PlayerClass = CLass;
             Level = level;
+            CurrentHP = currentHP;
+            MaxHP = maxHP;
             Str = str;
             dex = Dex;
             con = Con;

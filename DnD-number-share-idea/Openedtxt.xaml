@@ -29,8 +29,14 @@
                                         <TextBlock Text="Level:" FontWeight="Bold"/>
                                         <TextBox Text="{Binding Level, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
 
-                                        <!-- Repeat the pattern for Str, Dex, Con, Int, Wis, Cha with labels -->
-                                        <!-- Example for Str: -->
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="HP: " FontWeight="Bold"/>
+                                            <TextBox Text="{Binding CurrentHP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                                            <TextBlock Text=" out of "/>
+                                            <TextBox Text="{Binding MaxHP, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                                        </StackPanel>
+
+
                                         <TextBlock Text="Strength (Str):" FontWeight="Bold"/>
                                         <TextBox Text="{Binding Str, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
 
