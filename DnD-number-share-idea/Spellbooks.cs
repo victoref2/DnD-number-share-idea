@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace DnD_number_share_idea
 {
+    public static class GlobalSpellbook
+    {
+        public static List<Spell> Spells = new List<Spell>();
+
+        public static Spell FindSpellById(int id)
+        {
+            return Spells.FirstOrDefault(spell => spell.Id == id);
+        }
+    }
     public class SpellService
     {
-        public static class GlobalSpellbook
-        {
-            public static List<Spell> Spells = new List<Spell>();
-
-            public static Spell FindSpellById(int id)
-            {
-                return Spells.FirstOrDefault(spell => spell.Id == id);
-            }
-        }
         public static List<Spell> GetPlayerSpells(Player player)
         {
             return player.SpellIds.Select(id => GlobalSpellbook.FindSpellById(id))
