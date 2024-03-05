@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace DnD_number_share_idea
 {
@@ -88,6 +89,7 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(Name));
             }
         }
+        
 
         public string CharacterName
         {
@@ -213,7 +215,16 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(MaxHP));
             }
         }
-
+        private List<int> spellIds = new List<int>();
+        public List<int> SpellIds
+        {
+            get => spellIds;
+            set
+            {
+                spellIds = value;
+                OnPropertyChanged(nameof(SpellIds));
+            }
+        }
         // Constructor for easy instantiation
         public Player(string name, string characterName, string CLass, int level, int str, int Dex, int Con, int Int,int Wis, int Cha, String pnotes, int currentHP, int maxHP)
         {
@@ -230,6 +241,7 @@ namespace DnD_number_share_idea
             wis = Wis;
             cha = Cha;
             Pnotes = pnotes;
+
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -238,5 +250,6 @@ namespace DnD_number_share_idea
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+    
 
 }
