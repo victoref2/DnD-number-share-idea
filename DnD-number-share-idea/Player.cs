@@ -76,29 +76,6 @@ namespace DnD_number_share_idea
     }
     public class Player : INotifyPropertyChanged
     {
-        private SessionData _sessionData;
-                
-        private List<int> spellIds = new List<int>();
-        public List<int> SpellIds
-        {
-            get => spellIds;
-            set
-            {
-                spellIds = value;
-                OnPropertyChanged(nameof(SpellIds));
-                OnPropertyChanged(nameof(PlayerSpells)); // Ensure the UI knows to update PlayerSpells
-            }
-        }
-        public void SetSessionData(SessionData sessionData)
-        {
-            this._sessionData = sessionData;
-            OnPropertyChanged(nameof(PlayerSpells)); // Refresh any bindings that might depend on session data.
-        }       
-
-        public IEnumerable<Spell> PlayerSpells => _sessionData.Spells.Where(spell => SpellIds.Contains(spell.Id));
-        
-
-
         private string name;
         private string characterName;
         private string playerClass;
@@ -112,7 +89,7 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(Name));
             }
         }
-
+        
 
         public string CharacterName
         {
@@ -184,7 +161,7 @@ namespace DnD_number_share_idea
             {
                 wis = value;
                 OnPropertyChanged(nameof(Wis));
-            }
+            } 
         }
 
         private int cha; // Adjust naming convention to Cha for consistency
@@ -238,10 +215,19 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(MaxHP));
             }
         }
-        
-        public Player(SessionData sessionData, string name, string characterName, string CLass, int level, int str, int Dex, int Con, int Int,int Wis, int Cha, String pnotes, int currentHP, int maxHP, List<int> spellIds = null )
+        private List<int> spellIds = new List<int>();
+        public List<int> SpellIds
         {
-            _sessionData = sessionData;
+            get => spellIds;
+            set
+            {
+                spellIds = value;
+                OnPropertyChanged(nameof(SpellIds));
+            }
+        }
+        // Constructor for easy instantiation
+        public Player(string name, string characterName, string CLass, int level, int str, int Dex, int Con, int Int,int Wis, int Cha, String pnotes, int currentHP, int maxHP)
+        {
             Name = name;
             CharacterName = characterName;
             PlayerClass = CLass;
@@ -255,7 +241,7 @@ namespace DnD_number_share_idea
             wis = Wis;
             cha = Cha;
             Pnotes = pnotes;
-            SpellIds = spellIds ?? new List<int>();
+
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -263,10 +249,7 @@ namespace DnD_number_share_idea
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        
-        
-
     }
-
+    
 
 }

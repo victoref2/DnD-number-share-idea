@@ -20,13 +20,11 @@ namespace DnD_number_share_idea
     /// </summary>
     public partial class Openedtxt : Window
     {
-        private MainViewModel _mainViewModel;
-
-        public Openedtxt(MainViewModel mainViewModel)
+        public Openedtxt()
         {
             InitializeComponent();
-            _mainViewModel = mainViewModel;
-            DataContext = _mainViewModel;
+            DataContext = new MainViewModel();
+
         }
 
         private void AddNewPlayer_Click(object sender, RoutedEventArgs e)
@@ -87,43 +85,20 @@ namespace DnD_number_share_idea
         private void AddNewSpell_Click(object sender, RoutedEventArgs e)
         {
             Spell_maker spellMakerWindow = new Spell_maker(_mainViewModel);
-            spellMakerWindow.Closed += SpellMakerWindow_Closed; 
+            spellMakerWindow.Closed += SpellMakerWindow_Closed;
             spellMakerWindow.ShowDialog();
         }
         private void SpellMakerWindow_Closed(object sender, EventArgs e)
         {
-            
+
             SpellsDataGrid.Items.Refresh();
 
-            
+
             if (sender is Spell_maker spellMakerWindow)
             {
                 spellMakerWindow.Closed -= SpellMakerWindow_Closed;
             }
         }
-
-        
-        private void AssignSpellToPlayer_Click(object sender, RoutedEventArgs e)
-        {
-            // Ensure this.DataContext is set to MainViewModel
-            var mainViewModel = this.DataContext as MainViewModel;
-            if (mainViewModel == null) return; // Safeguard to ensure MainViewModel is accessible
-
-            var selectedSpell = SpellsDataGrid.SelectedItem as Spell;
-            if (selectedSpell != null)
-            {
-                // Directly use Players from MainViewModel
-                var assignSpellWindow = new AssignSpellWindow(mainViewModel.Players.ToList(), selectedSpell);
-                if (assignSpellWindow.ShowDialog() == true)
-                {
-                    // If the window allows modifying the players (assigning spells), you might need to refresh
-                    // the player list or handle specific UI updates here. 
-                    // This often involves re-binding the data or notifying the UI of changes.
-                }
-            }
-        }
-
-
 
 
 

@@ -76,12 +76,15 @@ namespace DnD_number_share_idea
                     player.SetSessionData(sessionData);
                 }
 
-                var viewModel = DataContext as MainViewModel;
-                if (viewModel != null)
-                {
-                    viewModel.SessionData = sessionData;
-                    // Proceed with the rest of your loading logic
-                }
+            var viewModel = this.DataContext as MainViewModel;
+            if (viewModel != null && sessionData != null)
+            {
+                viewModel.SessionData = sessionData;
+
+                // Open the Openedtxt window here
+                Openedtxt openedTxtWindow = new Openedtxt();
+                openedTxtWindow.DataContext = viewModel; // Pass the MainViewModel instance to the new window
+                openedTxtWindow.Show();
             }
         }
 
@@ -121,7 +124,11 @@ namespace DnD_number_share_idea
             currentSessionFilePath = filePath;
             LoadSessionData(filePath); // This method should open the Openedtxt window as shown above
         }
-        
+        private void OpenSpellMaker_Click(object sender, RoutedEventArgs e)
+        {
+            Spell_maker spellMakerWindow = new Spell_maker();
+            spellMakerWindow.Show();
+        }
 
 
     }
