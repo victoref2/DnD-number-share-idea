@@ -34,7 +34,6 @@ namespace DnD_number_share_idea
             {
                 // Example of creating a new Player with default values for all constructor parameters
                 Player newPlayer = new Player(
-                    sessionData: vm.SessionData,
                     name: "New Player",
                     characterName: "Unknown Character",
                     CLass: "Class Placeholder",
@@ -84,7 +83,8 @@ namespace DnD_number_share_idea
         }
         private void AddNewSpell_Click(object sender, RoutedEventArgs e)
         {
-            Spell_maker spellMakerWindow = new Spell_maker(_mainViewModel);
+            var vm = DataContext as MainViewModel;
+            Spell_maker spellMakerWindow = new Spell_maker(vm);
             spellMakerWindow.Closed += SpellMakerWindow_Closed;
             spellMakerWindow.ShowDialog();
         }

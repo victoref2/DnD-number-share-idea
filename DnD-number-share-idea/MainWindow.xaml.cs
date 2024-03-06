@@ -68,13 +68,6 @@ namespace DnD_number_share_idea
         {
             string json = File.ReadAllText(filePath);
             var sessionData = JsonConvert.DeserializeObject<SessionData>(json);
-            if (sessionData != null)
-            {
-                // Assuming SessionData has a method to set itself on each player or you do it here explicitly.
-                foreach (var player in sessionData.Players)
-                {
-                    player.SetSessionData(sessionData);
-                }
 
             var viewModel = this.DataContext as MainViewModel;
             if (viewModel != null && sessionData != null)
