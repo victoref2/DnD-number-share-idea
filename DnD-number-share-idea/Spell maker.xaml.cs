@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DnD_number_share_idea
 {
@@ -19,25 +9,40 @@ namespace DnD_number_share_idea
     /// </summary>
     public partial class Spell_maker : Window
     {
-        public Spell_maker()
+        
+        public Spell NewSpell { get; private set; } // Property to access the created spell
+
+        private MainViewModel _mainViewModel;
+
+        public Spell_maker(MainViewModel mainViewModel)
         {
             InitializeComponent();
+            _mainViewModel = mainViewModel;
         }
-        private void Next_Click(object sender, RoutedEventArgs e)
-        {
-            var spellName = SpellNameTextBox.Text;
-            bool verbalComponent = VerbalComponentCheckBox.IsChecked ?? false;
-            bool somaticComponent = SomaticComponentCheckBox.IsChecked ?? false;
 
-            // Placeholder for collecting additional components
-            List<string> additionalComponents = new List<string>();
-            foreach (var child in AdditionalComponentsStackPanel.Children)
+        private void Done_Click(object sender, RoutedEventArgs e)
+        {
+            Spell newSpell = new Spell(); // Populate spell details
+            // Create the new Spell object
+            newSpell = new Spell
             {
-                if (child is TextBox textBox && !string.IsNullOrWhiteSpace(textBox.Text))
-                {
-                    additionalComponents.Add(textBox.Text);
-                }
-            }
+                // ID assignment is managed by the collection or upon addition
+                Name = SpellNameTextBox.Text,
+                Level = int.TryParse(SpellLevelTextBox.Text, out int level) ? level : 0,
+                casting_time = CastingTimeTextBox.Text,
+                duration = DurationTextBox.Text,
+                Range = RangeTextBox.Text,
+                Damage = DamageTextBox.Text,
+                Components = ComponentsTextBox.Text,
+                Description = DescriptionTextBox.Text
+            };
+
+            
+            _mainViewModel.AddSpell(newSpell);
+
+            // Signal the dialog result as true and close the window
+            this.DialogResult = true;
+            this.Close();
         }
     }
 }

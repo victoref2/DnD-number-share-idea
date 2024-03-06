@@ -69,14 +69,12 @@ namespace DnD_number_share_idea
             string json = File.ReadAllText(filePath);
             var sessionData = JsonConvert.DeserializeObject<SessionData>(json);
 
-            var viewModel = this.DataContext as MainViewModel;
+            var viewModel = DataContext as MainViewModel;
             if (viewModel != null && sessionData != null)
             {
                 viewModel.SessionData = sessionData;
 
-                // Open the Openedtxt window here
-                Openedtxt openedTxtWindow = new Openedtxt();
-                openedTxtWindow.DataContext = viewModel; // Pass the MainViewModel instance to the new window
+                Openedtxt openedTxtWindow = new Openedtxt(viewModel); // Pass the viewModel instance
                 openedTxtWindow.Show();
             }
         }
@@ -115,11 +113,7 @@ namespace DnD_number_share_idea
             currentSessionFilePath = filePath;
             LoadSessionData(filePath); // This method should open the Openedtxt window as shown above
         }
-        private void OpenSpellMaker_Click(object sender, RoutedEventArgs e)
-        {
-            Spell_maker spellMakerWindow = new Spell_maker();
-            spellMakerWindow.Show();
-        }
+        
 
 
     }

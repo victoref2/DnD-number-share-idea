@@ -20,11 +20,13 @@ namespace DnD_number_share_idea
     /// </summary>
     public partial class Openedtxt : Window
     {
-        public Openedtxt()
+        private MainViewModel _mainViewModel;
+
+        public Openedtxt(MainViewModel mainViewModel)
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
-
+            _mainViewModel = mainViewModel;
+            DataContext = _mainViewModel;
         }
 
         private void AddNewPlayer_Click(object sender, RoutedEventArgs e)
@@ -81,6 +83,31 @@ namespace DnD_number_share_idea
                 });
             }
         }
+        private void AddNewSpell_Click(object sender, RoutedEventArgs e)
+        {
+            Spell_maker spellMakerWindow = new Spell_maker(_mainViewModel);
+            spellMakerWindow.Closed += SpellMakerWindow_Closed; 
+            spellMakerWindow.ShowDialog();
+        }
+        private void SpellMakerWindow_Closed(object sender, EventArgs e)
+        {
+            
+            SpellsDataGrid.Items.Refresh();
+
+            
+            if (sender is Spell_maker spellMakerWindow)
+            {
+                spellMakerWindow.Closed -= SpellMakerWindow_Closed;
+            }
+        }
+
+
+        private void AssignSpellToPlayer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
 
     }
 

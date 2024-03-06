@@ -43,6 +43,19 @@ namespace DnD_number_share_idea
                     OnPropertyChanged(nameof(Notes));
                 }
             }
+            private ObservableCollection<Spell> _spells = new ObservableCollection<Spell>();
+            public ObservableCollection<Spell> Spells
+            {
+                get => _spells;
+                set
+                {
+                    _spells = value;
+                    OnPropertyChanged(nameof(Spells));
+                }
+            }
+            public Spell FindSpellById(int id) => Spells.FirstOrDefault(spell => spell.Id == id);
+
+
 
             public event PropertyChangedEventHandler PropertyChanged;
 
@@ -50,6 +63,9 @@ namespace DnD_number_share_idea
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
+
+            
+
         }
     
     
@@ -64,12 +80,38 @@ namespace DnD_number_share_idea
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+
             protected virtual void OnPropertyChanged(string propertyName = null)
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
-        }
- 
+
+            
+
+
+            public List<Spell> GetPlayerSpells(Player player) =>
+                player.SpellIds.Select(id => SessionData.Spells.FirstOrDefault(s => s.Id == id)).Where(spell => spell != null).ToList();
+
+
+            public void AddSpell(Spell spell)
+            {
+                SessionData.Spells.Add(spell);
+                OnPropertyChanged(nameof(SessionData.Spells)); // This line might not be necessary since ObservableCollection already notifies on add/remove.
+            }
+
+            public void AssignSpellToPlayer(Player player, int spellId)
+            { 
+                var spell = SessionData.Spells.FirstOrDefault(s => s.Id == spellId);
+                if (spell != null && !player.SpellIds.Contains(spellId))
+                {
+                    player.SpellIds.Add(spellId);
+                    // Here, OnPropertyChanged for player.SpellIds is not directly useful unless you have a custom implementation in Player class to handle this.
+                    // Instead, you might need to refresh the player in the UI explicitly or ensure the UI reacts to the collection change in SpellIds.
+                }
+            }
+
+    }
+
 
 
     public class NPCViewModel
@@ -118,7 +160,6 @@ namespace DnD_number_share_idea
         public ObservableCollection<Player> Players { get; set; }
 
         
-
         public void AddPlayer(Player player)
         {
             Players.Add(player);
@@ -129,6 +170,14 @@ namespace DnD_number_share_idea
         {
             Players.Remove(player);
         }
+
     }
+    public class Spellbook
+    {
+        public ObservableCollection<Spell> Spells { get; set; } = new ObservableCollection<Spell>();
+
+        public Spell FindSpellById(int id) => Spells.FirstOrDefault(spell => spell.Id == id);
+    }
+
 }
 

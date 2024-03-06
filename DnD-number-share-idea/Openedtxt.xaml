@@ -58,6 +58,15 @@
 
                                         <TextBlock Text="Player Notes:" FontWeight="Bold"/>
                                         <TextBox Text="{Binding Pnotes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
+                                        
+                                        
+                                        <DataGrid ItemsSource="{Binding PlayerSpells}" AutoGenerateColumns="False" CanUserAddRows="False">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                                                <DataGridTextColumn Header="LVL" Binding="{Binding Level}" />
+                                                <DataGridTextColumn Header="Components" Binding="{Binding Components}" />
+                                            </DataGrid.Columns>
+                                        </DataGrid>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -82,7 +91,9 @@
                                         <TextBox Text="{Binding NPCDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
 
                                         <!-- Add more NPC details here -->
+                                    
                                     </StackPanel>
+                                    
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
@@ -113,6 +124,24 @@
                         </ListView>
                     </StackPanel>
                 </ScrollViewer>
+            </TabItem>
+            <TabItem Header="Spells">
+                <Grid>
+                    <Button Content="Add New Spell" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="AddNewSpell_Click"/>
+                    <DataGrid x:Name="SpellsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding SessionData.Spells}" Margin="10,50,10,10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Level" Binding="{Binding Level}"/>
+                            <DataGridTextColumn Header="Casting Time" Binding="{Binding casting_time}"/>
+                            <DataGridTextColumn Header="Duration" Binding="{Binding duration}"/>
+                            <DataGridTextColumn Header="Range" Binding="{Binding Range}"/>
+                            <DataGridTextColumn Header="Damage" Binding="{Binding Damage}"/>
+                            <DataGridTextColumn Header="Components" Binding="{Binding Components}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Assign Spell to Player" HorizontalAlignment="Left" Margin="10,360,0,0" VerticalAlignment="Top" Click="AssignSpellToPlayer_Click"/>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

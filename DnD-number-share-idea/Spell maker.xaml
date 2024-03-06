@@ -5,23 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DnD_number_share_idea"
         mc:Ignorable="d"
-        Title="Spell_maker" Height="450" Width="800">
-    <StackPanel Margin="10">
-        <!-- Spell Name -->
-        <TextBox x:Name="SpellNameTextBox" Text="Spell Name" Margin="0,0,0,10"/>
+        Title="Spell Maker" Height="600" Width="400">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="10">
+            <TextBox x:Name="SpellNameTextBox" Margin="0,10,0,10" Text="Spell Name"/>
 
-        <!-- Spell Components -->
-        <CheckBox x:Name="VerbalComponentCheckBox" Content="Verbal (V)" Margin="0,0,0,5"/>
-        <CheckBox x:Name="SomaticComponentCheckBox" Content="Somatic (S)" Margin="0,0,0,10"/>
+            <TextBlock Text="Level"/>
+            <TextBox x:Name="SpellLevelTextBox" Margin="0,0,0,10" Text="Spell Level"/>
 
-        <!-- Additional Components -->
-        <StackPanel x:Name="AdditionalComponentsStackPanel">
-            <TextBox Text="Component 1" Margin="0,0,0,5"/>
-            <TextBox Text="Component 2" Margin="0,0,0,5"/>
-            <TextBox Text="Component 3" Margin="0,0,0,10"/>
+            <TextBlock Text="Casting Time"/>
+            <TextBox x:Name="CastingTimeTextBox" Margin="0,0,0,10" Text="Casting Time"/>
+
+            <TextBlock Text="Duration"/>
+            <TextBox x:Name="DurationTextBox" Margin="0,0,0,10" Text="Duration"/>
+
+            <TextBlock Text="Range"/>
+            <TextBox x:Name="RangeTextBox" Margin="0,0,0,10" Text="Range"/>
+
+            <TextBlock Text="Damage"/>
+            <TextBox x:Name="DamageTextBox" Margin="0,0,0,10" Text="Damage"/>
+
+            <TextBlock Text="Components"/>
+            <TextBox x:Name="ComponentsTextBox" Margin="0,0,0,10" Text="Components (e.g., V, S, M)"/>
+
+            <TextBlock Text="Description"/>
+            <TextBox x:Name="DescriptionTextBox" Margin="0,0,0,20" Text="Description" AcceptsReturn="True" Height="100"/>
+
+            <Button Content="Done" HorizontalAlignment="Right" Click="Done_Click"/>
         </StackPanel>
-
-        <!-- Navigation Buttons -->
-        <Button Content="Next" HorizontalAlignment="Right" Click="Next_Click"/>
-    </StackPanel>
+    </ScrollViewer>
 </Window>

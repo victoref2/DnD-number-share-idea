@@ -89,7 +89,7 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(Name));
             }
         }
-        
+
 
         public string CharacterName
         {
@@ -161,7 +161,7 @@ namespace DnD_number_share_idea
             {
                 wis = value;
                 OnPropertyChanged(nameof(Wis));
-            } 
+            }
         }
 
         private int cha; // Adjust naming convention to Cha for consistency
@@ -226,6 +226,11 @@ namespace DnD_number_share_idea
             }
         }
         // Constructor for easy instantiation
+
+
+        
+
+
         public Player(string name, string characterName, string CLass, int level, int str, int Dex, int Con, int Int,int Wis, int Cha, String pnotes, int currentHP, int maxHP)
         {
             Name = name;
@@ -249,7 +254,10 @@ namespace DnD_number_share_idea
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        
+        
+
     }
-    
+
 
 }
