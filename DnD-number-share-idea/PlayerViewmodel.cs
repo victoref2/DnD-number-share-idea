@@ -53,11 +53,9 @@ namespace DnD_number_share_idea
                     OnPropertyChanged(nameof(Spells));
                 }
             }
-            public Spell FindSpellById(int id) => Spells.FirstOrDefault(spell => spell.Id == id);
+        public Spell FindSpellById(int id) => Spells.FirstOrDefault(spell => spell.Id == id);
 
-
-
-            public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
             protected virtual void OnPropertyChanged(string propertyName)
             {
@@ -100,17 +98,19 @@ namespace DnD_number_share_idea
             }
 
             public void AssignSpellToPlayer(Player player, int spellId)
-            { 
+            {
                 var spell = SessionData.Spells.FirstOrDefault(s => s.Id == spellId);
                 if (spell != null && !player.SpellIds.Contains(spellId))
                 {
                     player.SpellIds.Add(spellId);
-                    // Here, OnPropertyChanged for player.SpellIds is not directly useful unless you have a custom implementation in Player class to handle this.
-                    // Instead, you might need to refresh the player in the UI explicitly or ensure the UI reacts to the collection change in SpellIds.
+                    // If your UI is directly bound to the Players collection and reflects changes in the SpellIds,
+                    // you might need to explicitly notify that the player's data has changed.
+                    OnPropertyChanged($"Players[{SessionData.Players.IndexOf(player)}]");
                 }
             }
 
-    }
+
+        }
 
 
 
@@ -170,14 +170,23 @@ namespace DnD_number_share_idea
         {
             Players.Remove(player);
         }
+        
+        
+            private readonly SessionData _sessionData; // Assuming this is initialized elsewhere
+
+            public PlayerViewModel(SessionData sessionData)
+            {
+                _sessionData = sessionData;
+            }
+
+            public IEnumerable<Spell> GetPlayerSpells(Player player)
+            {
+                return player.SpellIds.Select(id => _sessionData.FindSpellById(id)).Where(spell => spell != null);
+            }
+        
 
     }
-    public class Spellbook
-    {
-        public ObservableCollection<Spell> Spells { get; set; } = new ObservableCollection<Spell>();
 
-        public Spell FindSpellById(int id) => Spells.FirstOrDefault(spell => spell.Id == id);
-    }
 
 }
 

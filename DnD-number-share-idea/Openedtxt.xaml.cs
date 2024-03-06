@@ -36,6 +36,7 @@ namespace DnD_number_share_idea
             {
                 // Example of creating a new Player with default values for all constructor parameters
                 Player newPlayer = new Player(
+                    sessionData: vm.SessionData,
                     name: "New Player",
                     characterName: "Unknown Character",
                     CLass: "Class Placeholder",
@@ -50,7 +51,7 @@ namespace DnD_number_share_idea
                     Cha: 10,
                     pnotes: "Notes Placeholder"
                 );
-                vm.Players.Add(newPlayer);
+                vm.SessionData.Players.Add(newPlayer);
             }
         }
 
@@ -101,11 +102,28 @@ namespace DnD_number_share_idea
             }
         }
 
-
+        
         private void AssignSpellToPlayer_Click(object sender, RoutedEventArgs e)
         {
+            // Ensure this.DataContext is set to MainViewModel
+            var mainViewModel = this.DataContext as MainViewModel;
+            if (mainViewModel == null) return; // Safeguard to ensure MainViewModel is accessible
 
+            var selectedSpell = SpellsDataGrid.SelectedItem as Spell;
+            if (selectedSpell != null)
+            {
+                // Directly use Players from MainViewModel
+                var assignSpellWindow = new AssignSpellWindow(mainViewModel.Players.ToList(), selectedSpell);
+                if (assignSpellWindow.ShowDialog() == true)
+                {
+                    // If the window allows modifying the players (assigning spells), you might need to refresh
+                    // the player list or handle specific UI updates here. 
+                    // This often involves re-binding the data or notifying the UI of changes.
+                }
+            }
         }
+
+
 
 
 

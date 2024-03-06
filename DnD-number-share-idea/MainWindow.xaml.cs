@@ -68,16 +68,24 @@ namespace DnD_number_share_idea
         {
             string json = File.ReadAllText(filePath);
             var sessionData = JsonConvert.DeserializeObject<SessionData>(json);
-
-            var viewModel = DataContext as MainViewModel;
-            if (viewModel != null && sessionData != null)
+            if (sessionData != null)
             {
-                viewModel.SessionData = sessionData;
+                // Assuming SessionData has a method to set itself on each player or you do it here explicitly.
+                foreach (var player in sessionData.Players)
+                {
+                    player.SetSessionData(sessionData);
+                }
 
-                Openedtxt openedTxtWindow = new Openedtxt(viewModel); // Pass the viewModel instance
-                openedTxtWindow.Show();
+                var viewModel = DataContext as MainViewModel;
+                if (viewModel != null)
+                {
+                    viewModel.SessionData = sessionData;
+                    // Proceed with the rest of your loading logic
+                }
             }
         }
+
+
 
 
 
