@@ -117,11 +117,7 @@ namespace DnD_number_share_idea
             currentSessionFilePath = filePath;
             LoadSessionData(filePath); // This method should open the Openedtxt window as shown above
         }
-        private void OpenSpellMaker_Click(object sender, RoutedEventArgs e)
-        {
-            Spell_maker spellMakerWindow = new Spell_maker();
-            spellMakerWindow.Show();
-        }
+        
 
 
     }

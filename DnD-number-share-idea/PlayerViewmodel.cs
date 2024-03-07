@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
+using System.Windows;
 
 namespace DnD_number_share_idea
 {
@@ -43,33 +45,70 @@ namespace DnD_number_share_idea
                     OnPropertyChanged(nameof(Notes));
                 }
             }
+            private ObservableCollection<Spell> _spells = new ObservableCollection<Spell>();
+            public ObservableCollection<Spell> Spells
+            {
+                get => _spells;
+                set
+                {
+                    _spells = value;
+                    OnPropertyChanged(nameof(Spells));
+                }
+            }
 
-            public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
             protected virtual void OnPropertyChanged(string propertyName)
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
+            
         }
-    
-    
-        public class MainViewModel : INotifyPropertyChanged
-        {
+        
+    public class MainViewModel : INotifyPropertyChanged
+    {
         public SessionData SessionData { get; set; } = new SessionData();
-
-        // Assuming SessionData has ObservableCollection properties for Players, NPCs, and Notes
         public ObservableCollection<Player> Players => SessionData.Players;
+
+            
         public ObservableCollection<NPC> NPCs => SessionData.NPCs;
         public ObservableCollection<Note> Notes => SessionData.Notes;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-            protected virtual void OnPropertyChanged(string propertyName = null)
+        protected virtual void OnPropertyChanged(string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        public ObservableCollection<Spell> Spells => SessionData.Spells;
+
+        public void AddSpell(Spell spell)
+        {
+            Spells.Add(spell);
+        }
+
+        public void RemoveSpell(Spell spell)
+        {
+                Spells.Remove(spell);
+        }
+
+        public ICommand ToggleDetailsCommand { get; private set; }
+
+        public MainViewModel()
+        {
+            ToggleDetailsCommand = new RelayCommand(ToggleDetails);
+        }
+
+        private void ToggleDetails(object parameter)
+        {
+            if (parameter is Player player)
             {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                player.DetailsVisibility = player.DetailsVisibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
             }
         }
- 
+
+    }
+
 
 
     public class NPCViewModel
@@ -91,6 +130,8 @@ namespace DnD_number_share_idea
             NPCs.Remove(nPC);
         }
         // Add methods to add, remove, or update NPCs as needed
+
+
     }
 
     public class NoteViewModel

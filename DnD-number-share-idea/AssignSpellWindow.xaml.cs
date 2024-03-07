@@ -40,7 +40,7 @@ namespace DnD_number_share_idea
             SelectedPlayer = PlayersListBox.SelectedItem as Player;
             if (SelectedPlayer != null)
             {
-                SelectedPlayer.SpellIds.Add(_selectedSpell.Id);
+                SelectedPlayer.Spellslist.Add(_selectedSpell);
                 this.DialogResult = true;
             }
         }

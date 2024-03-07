@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace DnD_number_share_idea
 {
@@ -79,17 +80,7 @@ namespace DnD_number_share_idea
         
 
         
-        private List<int> spellIds = new List<int>();
-        public List<int> SpellIds
-        {
-            get => spellIds;
-            set
-            {
-                spellIds = value;
-                OnPropertyChanged(nameof(SpellIds));
-                OnPropertyChanged(nameof(PlayerSpells)); // Ensure the UI knows to update PlayerSpells
-            }
-        }
+        
 
 
         private string name;
@@ -190,6 +181,7 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(Cha));
             }
         }
+        public ObservableCollection<Spell> Spellslist { get; set; }
 
         public int Level
         {
@@ -232,7 +224,7 @@ namespace DnD_number_share_idea
             }
         }
         
-        public Player(string name, string characterName, string CLass, int level, int str, int Dex, int Con, int Int,int Wis, int Cha, String pnotes, int currentHP, int maxHP, List<int> spellIds = null )
+        public Player(string name, string characterName, string CLass, int level, int str, int Dex, int Con, int Int,int Wis, int Cha, String pnotes, int currentHP, int maxHP)
         {
             
             Name = name;
@@ -248,7 +240,8 @@ namespace DnD_number_share_idea
             wis = Wis;
             cha = Cha;
             Pnotes = pnotes;
-            SpellIds = spellIds ?? new List<int>();
+            Spellslist = new ObservableCollection<Spell>();
+
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -256,8 +249,17 @@ namespace DnD_number_share_idea
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        
-        
+
+        private Visibility _detailsVisibility = Visibility.Collapsed; // Start with details hidden
+        public Visibility DetailsVisibility
+        {
+            get => _detailsVisibility;
+            set
+            {
+                _detailsVisibility = value;
+                OnPropertyChanged(nameof(DetailsVisibility));
+            }
+        }
 
     }
 

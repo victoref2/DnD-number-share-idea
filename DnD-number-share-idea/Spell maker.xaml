@@ -5,23 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DnD_number_share_idea"
         mc:Ignorable="d"
-        Title="Spell_maker" Height="450" Width="800">
+        Title="Spell_maker" Height="400" Width="300">
     <StackPanel Margin="10">
-        <!-- Spell Name -->
-        <TextBox x:Name="SpellNameTextBox" Text="Spell Name" Margin="0,0,0,10"/>
-
-        <!-- Spell Components -->
-        <CheckBox x:Name="VerbalComponentCheckBox" Content="Verbal (V)" Margin="0,0,0,5"/>
-        <CheckBox x:Name="SomaticComponentCheckBox" Content="Somatic (S)" Margin="0,0,0,10"/>
-
-        <!-- Additional Components -->
-        <StackPanel x:Name="AdditionalComponentsStackPanel">
-            <TextBox Text="Component 1" Margin="0,0,0,5"/>
-            <TextBox Text="Component 2" Margin="0,0,0,5"/>
-            <TextBox Text="Component 3" Margin="0,0,0,10"/>
-        </StackPanel>
-
-        <!-- Navigation Buttons -->
-        <Button Content="Next" HorizontalAlignment="Right" Click="Next_Click"/>
+        <TextBox x:Name="NameTextBox" Margin="5" Text="Name"/>
+        <TextBox x:Name="LevelTextBox" Margin="5" Text="Level"/>
+        <TextBox x:Name="Casting_time" Margin="5" Text="Casting time"/>
+        <TextBox x:Name="Duration" Margin="5" Text="Duration"/>
+        <TextBox x:Name="RangeTextBox" Margin="5" Text="Range"/>
+        <TextBox x:Name="DamageTextBox" Margin="5" Text="Damage"/>
+        <TextBox x:Name="ComponentsTextBox" Margin="5" Text="Components"/>
+        <TextBox x:Name="DescriptionTextBox" Margin="5" Text="Description" Height="100" TextWrapping="Wrap"/>
+        <Button Content="Done" HorizontalAlignment="Right" Margin="5" Click="Done_Click"/>
     </StackPanel>
 </Window>
