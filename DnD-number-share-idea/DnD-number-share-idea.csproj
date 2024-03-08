@@ -58,9 +58,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="assign item.xaml.cs">
+      <DependentUpon>assign item.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AssignSpellWindow.xaml.cs">
       <DependentUpon>AssignSpellWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Item maker.xaml.cs">
+      <DependentUpon>Item maker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Item.cs" />
     <Compile Include="Openedtxt.xaml.cs">
       <DependentUpon>Openedtxt.xaml</DependentUpon>
     </Compile>
@@ -70,7 +77,15 @@
       <DependentUpon>Spell maker.xaml</DependentUpon>
     </Compile>
     <Compile Include="Spellbooks.cs" />
+    <Page Include="assign item.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AssignSpellWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Item maker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

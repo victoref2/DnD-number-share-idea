@@ -78,11 +78,6 @@ namespace DnD_number_share_idea
     public class Player : INotifyPropertyChanged
     {
         
-
-        
-        
-
-
         private string name;
         private string characterName;
         private string playerClass;
@@ -182,6 +177,7 @@ namespace DnD_number_share_idea
             }
         }
         public ObservableCollection<Spell> Spellslist { get; set; }
+        public ObservableCollection<Item> Itemlist { get; set; }
 
         public int Level
         {
@@ -241,6 +237,7 @@ namespace DnD_number_share_idea
             cha = Cha;
             Pnotes = pnotes;
             Spellslist = new ObservableCollection<Spell>();
+            Itemlist = new ObservableCollection<Item>();
 
         }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -259,6 +256,17 @@ namespace DnD_number_share_idea
                 _detailsVisibility = value;
                 OnPropertyChanged(nameof(DetailsVisibility));
             }
+        }
+        public void UnassignItem(Item item)
+        {
+            Itemlist.Remove(item);
+            OnPropertyChanged(nameof(Itemlist));
+        }
+
+        public void UnassignSpell(Spell spell)
+        {
+            Spellslist.Remove(spell);
+            OnPropertyChanged(nameof(Spellslist));
         }
 
     }

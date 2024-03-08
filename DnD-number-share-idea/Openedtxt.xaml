@@ -65,7 +65,15 @@
                                             <TextBlock Text="Player Notes:" FontWeight="Bold"/>
                                             <TextBox Text="{Binding Pnotes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
 
-
+                                            <DataGrid ItemsSource="{Binding Itemlist}" AutoGenerateColumns="False" CanUserAddRows="False">
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+                                                    <DataGridTextColumn Header="LVL" Binding="{Binding Damage}" />
+                                                    <DataGridTextColumn Header="Components" Binding="{Binding Description}" />
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                            <Button Content="Unassign Selected Item" Click="UnassignSelectedItem_Click"/>
+                                            
                                             <DataGrid ItemsSource="{Binding Spellslist}" AutoGenerateColumns="False" CanUserAddRows="False">
                                                 <DataGrid.Columns>
                                                     <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
@@ -73,8 +81,9 @@
                                                     <DataGridTextColumn Header="Components" Binding="{Binding Components}" />
                                                 </DataGrid.Columns>
                                             </DataGrid>
-
-
+                                            <Button Content="Unassign Selected Spell" Click="UnassignSelectedSpell_Click"/>
+                                            <Button Content="Delete Player" Click="DeletePlayer_Click" Margin="5" HorizontalAlignment="Right"/>
+                                            
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
@@ -100,7 +109,7 @@
                                         <TextBox Text="{Binding NPCDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
 
                                         <!-- Add more NPC details here -->
-                                    
+                                        <Button Content="Delete NPC" Click="DeleteNPC_Click" Margin="5" HorizontalAlignment="Right"/>
                                     </StackPanel>
                                     
                                 </DataTemplate>
@@ -126,6 +135,7 @@
                                         <TextBlock Text="Note:" FontWeight="Bold"/>
                                         <TextBox Text="{Binding Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
 
+                                        <Button Content="Delete Note" Click="DeleteNote_Click" Margin="5" HorizontalAlignment="Right"/>
                                         <!-- Add more note details here -->
                                     </StackPanel>
                                 </DataTemplate>
@@ -136,7 +146,10 @@
             </TabItem>
             <TabItem Header="Spells">
                 <Grid>
-                    <Button Content="Add New Spell" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="AddNewSpell_Click"/>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                        <Button Content="Add New Spell" VerticalAlignment="Top" Click="AddNewSpell_Click"/>
+                        <Button Content="Delete Selected Spell" VerticalAlignment="Top" Margin="10,0,0,0" Click="DeleteSelectedSpell_Click"/>
+                    </StackPanel>
                     <DataGrid x:Name="SpellsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding SessionData.Spells}" Margin="10,50,10,10">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
@@ -150,6 +163,26 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Assign Spell to Player" HorizontalAlignment="Left" Margin="10,360,0,0" VerticalAlignment="Top" Click="AssignSpellToPlayer_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Items">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                        <Button Content="Add New Item" VerticalAlignment="Top" Click="AddNewItem_Click"/>
+                        <Button Content="Delete Selected Item" VerticalAlignment="Top" Margin="10,0,0,0" Click="DeleteSelectedItem_Click"/>
+                    </StackPanel>
+                    <DataGrid x:Name="ItemsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding SessionData.Items}" Margin="10,50,10,10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                            <DataGridTextColumn Header="Quantity" Binding="{Binding Quality}"/>
+                            <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                            <DataGridTextColumn Header="Weight" Binding="{Binding Weight}"/>
+                            <DataGridTextColumn Header="Damage" Binding="{Binding Damage}"/>
+                            <DataGridTextColumn Header="Category" Binding="{Binding Category}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Assign Item to Player" HorizontalAlignment="Left" Margin="10,360,0,0" VerticalAlignment="Top" Click="AssignItemToPlayer_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

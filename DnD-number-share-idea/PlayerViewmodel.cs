@@ -35,6 +35,13 @@ namespace DnD_number_share_idea
                 }
             }
 
+            private ObservableCollection<Item> _items = new ObservableCollection<Item>();
+            public ObservableCollection<Item> Items
+            {
+                get => _items;
+                set { _items = value; OnPropertyChanged(nameof(Items)); }
+            }   
+
             private ObservableCollection<Note> _notes = new ObservableCollection<Note>();
             public ObservableCollection<Note> Notes
             {
@@ -70,7 +77,7 @@ namespace DnD_number_share_idea
         public SessionData SessionData { get; set; } = new SessionData();
         public ObservableCollection<Player> Players => SessionData.Players;
 
-            
+        
         public ObservableCollection<NPC> NPCs => SessionData.NPCs;
         public ObservableCollection<Note> Notes => SessionData.Notes;
 
@@ -97,6 +104,7 @@ namespace DnD_number_share_idea
         public MainViewModel()
         {
             ToggleDetailsCommand = new RelayCommand(ToggleDetails);
+            
         }
 
         private void ToggleDetails(object parameter)
@@ -106,6 +114,7 @@ namespace DnD_number_share_idea
                 player.DetailsVisibility = player.DetailsVisibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
             }
         }
+        
 
     }
 
