@@ -246,9 +246,6 @@ namespace DnD_number_share_idea
                 vm?.SessionData.Items.Remove(selectedItem);
             }
         }
-
-
-
     }
 }
 

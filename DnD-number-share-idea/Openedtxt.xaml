@@ -24,7 +24,7 @@
                                         Command="{Binding DataContext.ToggleDetailsCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}"
                                         CommandParameter="{Binding}" />
                                         <StackPanel Visibility="{Binding DetailsVisibility}">
-                                            
+                                           
                                             
                                             <TextBlock Text="Character Name:" FontWeight="Bold"/>
                                             <TextBox Text="{Binding CharacterName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
@@ -45,8 +45,7 @@
 
                                             <TextBlock Text="Strength (Str):" FontWeight="Bold"/>
                                             <TextBox Text="{Binding Str, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
-
-                                            <!-- Repeat for Dex, Con, Int, Wis, Cha -->
+                                            
                                             <TextBlock Text="Dexterity (Dex):" FontWeight="Bold"/>
                                             <TextBox Text="{Binding Dex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
 
@@ -99,7 +98,6 @@
                         <ListView ItemsSource="{Binding NPCs}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <!-- NPC details template -->
                                     <StackPanel>
 
                                         <TextBlock Text="NPC name:" FontWeight="Bold"/>
@@ -107,8 +105,7 @@
 
                                         <TextBlock Text="NPC description:" FontWeight="Bold"/>
                                         <TextBox Text="{Binding NPCDescription, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
-
-                                        <!-- Add more NPC details here -->
+                                        
                                         <Button Content="Delete NPC" Click="DeleteNPC_Click" Margin="5" HorizontalAlignment="Right"/>
                                     </StackPanel>
                                     
@@ -125,7 +122,7 @@
                         <ListView ItemsSource="{Binding Notes}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <!-- Note details template -->
+                                    
                                     <StackPanel>
 
                                         <TextBlock Text="Title:" FontWeight="Bold"/>
@@ -136,7 +133,7 @@
                                         <TextBox Text="{Binding Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200" TextWrapping="Wrap"/>
 
                                         <Button Content="Delete Note" Click="DeleteNote_Click" Margin="5" HorizontalAlignment="Right"/>
-                                        <!-- Add more note details here -->
+                                        
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
