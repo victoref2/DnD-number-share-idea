@@ -248,4 +248,3 @@ namespace DnD_number_share_idea
         }
     }
 }
-
