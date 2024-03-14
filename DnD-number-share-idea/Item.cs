@@ -12,10 +12,10 @@ namespace DnD_number_share_idea
         private string _name;
         private string _description;
         private string _quality;
-        private string _type; // e.g., Weapon, Armor, Potion
-        private double _weight; // Weight in pounds (lbs)
-        private string _damage; // Applicable for weapons, e.g., "1d6", "2d8"
-        private string _category; // Further categorize items, e.g., Melee, Ranged, Potion, Scroll
+        private string _type; 
+        private double _weight; 
+        private string _damage; 
+        private string _category;
 
         public string Name
         {

@@ -6,7 +6,6 @@ namespace DnD_number_share_idea
 {
     public partial class Spell_maker : Window
     {
-        // Property to access the newly created spell
         public Spell NewSpell { get; private set; }
 
         public Spell_maker()
@@ -19,7 +18,6 @@ namespace DnD_number_share_idea
             // Create a new Spell instance from input fields
             NewSpell = new Spell
             {
-                // Assuming ID is auto-generated or not needed immediately
                 Name = NameTextBox.Text,
                 Level = int.TryParse(LevelTextBox.Text, out int level) ? level : 0,
                 casting_time = Casting_time.Text,
@@ -29,7 +27,6 @@ namespace DnD_number_share_idea
                 Components = ComponentsTextBox.Text,
                 Description = DescriptionTextBox.Text
             };
-
             // Close the spell maker window
             this.DialogResult = true;
             this.Close();
