@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DnD_number_share_idea"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600">
+        Title="Control panel" Height="450" Width="600">
     <Grid>
         <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Height="210" Width="255" Click="BtnLoad_Click"/>
         <Button x:Name="btnNew" Content="New" HorizontalAlignment="Left" Margin="300,107,0,0" VerticalAlignment="Top" Height="210" Width="255" Click="BtnNew_Click"/>
