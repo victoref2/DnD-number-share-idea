@@ -15,7 +15,6 @@ namespace DnD_number_share_idea
 
         private void Done_Click(object sender, RoutedEventArgs e)
         {
-            // Create a new Spell instance from input fields
             NewSpell = new Spell
             {
                 Name = NameTextBox.Text,
@@ -27,7 +26,6 @@ namespace DnD_number_share_idea
                 Components = ComponentsTextBox.Text,
                 Description = DescriptionTextBox.Text
             };
-            // Close the spell maker window
             this.DialogResult = true;
             this.Close();
         }

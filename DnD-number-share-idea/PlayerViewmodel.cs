@@ -127,7 +127,7 @@ namespace DnD_number_share_idea
         public NPCViewModel()
         {
             NPCs = new ObservableCollection<NPC>();
-            // Optionally, initialize with some default NPCs
+            
         }
         public void AddNPC(NPC nPC)
         {
@@ -138,7 +138,7 @@ namespace DnD_number_share_idea
         {
             NPCs.Remove(nPC);
         }
-        // Add methods to add, remove, or update NPCs as needed
+        
 
 
     }
@@ -150,7 +150,6 @@ namespace DnD_number_share_idea
         public NoteViewModel()
         {
             Notes = new ObservableCollection<Note>();
-            // Optionally, initialize with some default notes
         }
         public void AddPlayer(Note note)
         {
@@ -161,7 +160,6 @@ namespace DnD_number_share_idea
         {
             Notes.Remove(note);
         }
-        // Add methods to add, remove, or update notes as needed
     }
     public class PlayerViewModel
     {

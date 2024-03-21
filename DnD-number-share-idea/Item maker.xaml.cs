@@ -37,10 +37,7 @@ namespace DnD_number_share_idea
                 Damage = DamageTextBox.Text,
                 Category = CategoryTextBox.Text
             };
-
-            // Assuming you have a method to add the item to your collection or perform other actions
-            //AddItem(newItem)
-
+                        
             this.DialogResult = true;
             this.Close();
         }

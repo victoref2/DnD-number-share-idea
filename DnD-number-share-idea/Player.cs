@@ -102,13 +102,13 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(CharacterName));
             }
         }
-        public string PlayerClass // Corrected to match common naming conventions
+        public string PlayerClass 
         {
             get => playerClass;
             set
             {
                 playerClass = value;
-                OnPropertyChanged(nameof(PlayerClass)); // Changed to "PlayerClass"
+                OnPropertyChanged(nameof(PlayerClass)); 
             }
         }
         private int str;
@@ -122,7 +122,7 @@ namespace DnD_number_share_idea
             }
         }
 
-        private int dex; // Adjust naming convention to Dex for consistency
+        private int dex; 
         public int Dex
         {
             get => dex;
@@ -133,7 +133,7 @@ namespace DnD_number_share_idea
             }
         }
 
-        private int con; // Adjust naming convention to Con for consistency
+        private int con;
         public int Con
         {
             get => con;
@@ -144,7 +144,7 @@ namespace DnD_number_share_idea
             }
         }
 
-        private int intelligence; // Already correctly named
+        private int intelligence;
         public int INt
         {
             get => intelligence;
@@ -155,7 +155,7 @@ namespace DnD_number_share_idea
             }
         }
 
-        private int wis; // Adjust naming convention to Wis for consistency
+        private int wis;
         public int Wis
         {
             get => wis;
@@ -166,7 +166,7 @@ namespace DnD_number_share_idea
             }
         }
 
-        private int cha; // Adjust naming convention to Cha for consistency
+        private int cha;
         public int Cha
         {
             get => cha;
@@ -189,13 +189,13 @@ namespace DnD_number_share_idea
             }
         }
         private string pnotes;
-        public string Pnotes // Renamed from 'Notes' to 'Pnotes'
+        public string Pnotes
         {
             get => pnotes;
             set
             {
                 pnotes = value;
-                OnPropertyChanged(nameof(Pnotes)); // Reflect the property name change
+                OnPropertyChanged(nameof(Pnotes));
             }
         }
         private int _currentHP;
@@ -247,7 +247,7 @@ namespace DnD_number_share_idea
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private Visibility _detailsVisibility = Visibility.Collapsed; // Start with details hidden
+        private Visibility _detailsVisibility = Visibility.Collapsed;
         public Visibility DetailsVisibility
         {
             get => _detailsVisibility;

@@ -76,7 +76,7 @@ namespace DnD_number_share_idea
 
                 // Open the Openedtxt window here
                 Openedtxt openedTxtWindow = new Openedtxt();
-                openedTxtWindow.DataContext = viewModel; // Pass the MainViewModel instance to the new window
+                openedTxtWindow.DataContext = viewModel;
                 openedTxtWindow.Show();
             }
         }
@@ -86,7 +86,7 @@ namespace DnD_number_share_idea
 
 
 
-        // Event handler for the New button
+        
         private void BtnNew_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog
@@ -108,14 +108,14 @@ namespace DnD_number_share_idea
         {
             var sessionData = new SessionData
             {
-                // Initialize with default or empty data as needed
+                
             };
 
             string json = JsonConvert.SerializeObject(sessionData, Formatting.Indented);
             File.WriteAllText(filePath, json);
 
             currentSessionFilePath = filePath;
-            LoadSessionData(filePath); // This method should open the Openedtxt window as shown above
+            LoadSessionData(filePath); 
         }
         
 
