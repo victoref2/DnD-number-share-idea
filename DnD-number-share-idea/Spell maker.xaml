@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DnD_number_share_idea"
+        Background="Black"
         mc:Ignorable="d"
         Title="Spell_maker" Height="400" Width="300">
     <StackPanel Margin="10">
