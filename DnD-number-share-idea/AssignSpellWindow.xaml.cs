@@ -29,7 +29,9 @@ namespace DnD_number_share_idea
         public AssignSpellWindow(List<Player> players, Spell selectedSpell)
         {
             InitializeComponent();
+
             _players = players;
+            
             _selectedSpell = selectedSpell;
 
             PlayersListBox.ItemsSource = _players;
@@ -38,6 +40,7 @@ namespace DnD_number_share_idea
         private void AssignButton_Click(object sender, RoutedEventArgs e)
         {
             SelectedPlayer = PlayersListBox.SelectedItem as Player;
+            
             if (SelectedPlayer != null)
             {
                 SelectedPlayer.Spellslist.Add(_selectedSpell);

@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 
 namespace DnD_number_share_idea
 {
-    
+        
     public partial class Openedtxt : Window
     {
         public Openedtxt()
         {
             InitializeComponent();
             DataContext = new MainViewModel();
-
         }
 
         private void AddNewPlayer_Click(object sender, RoutedEventArgs e)
@@ -48,8 +47,6 @@ namespace DnD_number_share_idea
                 vm.SessionData.Players.Add(newPlayer);
             }
         }
-
-
 
         private void AddNewNPC_Click(object sender, RoutedEventArgs e)
         {
@@ -113,9 +110,6 @@ namespace DnD_number_share_idea
             }
         }
 
-        
-        
-
         private void AddNewItem_Click(object sender, RoutedEventArgs e)
         {
             var vm = DataContext as MainViewModel;
@@ -147,6 +141,7 @@ namespace DnD_number_share_idea
                 ItemsDataGrid.Items.Refresh();
             }
         }
+
         private void UnassignSelectedItem_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -172,6 +167,7 @@ namespace DnD_number_share_idea
                 (dataGrid.ItemsSource as ObservableCollection<Spell>)?.Remove(selectedspell);
             }
         }
+
         private void DeletePlayer_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.DataContext is Player player)
@@ -183,6 +179,7 @@ namespace DnD_number_share_idea
                 }
             }
         }
+
         private void DeleteNPC_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.DataContext is NPC npc)
@@ -194,6 +191,7 @@ namespace DnD_number_share_idea
                 }
             }
         }
+
         private void DeleteNote_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.DataContext is Note note)
@@ -205,6 +203,7 @@ namespace DnD_number_share_idea
                 }
             }
         }
+
         private void DeleteSelectedSpell_Click(object sender, RoutedEventArgs e)
         {
             var selectedSpell = SpellsDataGrid.SelectedItem as Spell;

@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:DnD_number_share_idea"
         mc:Ignorable="d"
         Title="Control panel" Height="450" Width="600">
-    <Grid>
+    <Grid x:Name="Main_grid">
         <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" Height="210" Width="255" Click="BtnLoad_Click"/>
         <Button x:Name="btnNew" Content="New" HorizontalAlignment="Left" Margin="300,107,0,0" VerticalAlignment="Top" Height="210" Width="255" Click="BtnNew_Click"/>
         

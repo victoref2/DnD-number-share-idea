@@ -12,6 +12,7 @@ namespace DnD_number_share_idea
     public class NPC : INotifyPropertyChanged
     {
         private string name;
+
         private string description;
 
         public string NPCName
@@ -45,6 +46,7 @@ namespace DnD_number_share_idea
     public class Note : INotifyPropertyChanged
     {
         private string title;
+
         private string content;
 
         public string Title
@@ -79,9 +81,13 @@ namespace DnD_number_share_idea
     {
         
         private string name;
+        
         private string characterName;
+        
         private string playerClass;
+        
         private int level;
+        
         public string Name
         {
             get => name;
@@ -92,7 +98,6 @@ namespace DnD_number_share_idea
             }
         }
 
-
         public string CharacterName
         {
             get => characterName;
@@ -102,6 +107,7 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(CharacterName));
             }
         }
+        
         public string PlayerClass 
         {
             get => playerClass;
@@ -111,7 +117,9 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(PlayerClass)); 
             }
         }
+        
         private int str;
+        
         public int Str
         {
             get => str;
@@ -123,6 +131,7 @@ namespace DnD_number_share_idea
         }
 
         private int dex; 
+        
         public int Dex
         {
             get => dex;
@@ -134,6 +143,7 @@ namespace DnD_number_share_idea
         }
 
         private int con;
+        
         public int Con
         {
             get => con;
@@ -145,6 +155,7 @@ namespace DnD_number_share_idea
         }
 
         private int intelligence;
+        
         public int INt
         {
             get => intelligence;
@@ -156,6 +167,7 @@ namespace DnD_number_share_idea
         }
 
         private int wis;
+
         public int Wis
         {
             get => wis;
@@ -167,6 +179,7 @@ namespace DnD_number_share_idea
         }
 
         private int cha;
+
         public int Cha
         {
             get => cha;
@@ -176,7 +189,9 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(Cha));
             }
         }
+
         public ObservableCollection<Spell> Spellslist { get; set; }
+
         public ObservableCollection<Item> Itemlist { get; set; }
 
         public int Level
@@ -188,7 +203,9 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(Level));
             }
         }
+
         private string pnotes;
+
         public string Pnotes
         {
             get => pnotes;
@@ -198,7 +215,9 @@ namespace DnD_number_share_idea
                 OnPropertyChanged(nameof(Pnotes));
             }
         }
+
         private int _currentHP;
+
         public int CurrentHP
         {
             get => _currentHP;
@@ -222,7 +241,6 @@ namespace DnD_number_share_idea
         
         public Player(string name, string characterName, string CLass, int level, int str, int Dex, int Con, int Int,int Wis, int Cha, String pnotes, int currentHP, int maxHP)
         {
-            
             Name = name;
             CharacterName = characterName;
             PlayerClass = CLass;

@@ -20,8 +20,6 @@ using System.Collections.ObjectModel;
 namespace DnD_number_share_idea
 {
 
-
-   
     public partial class MainWindow : Window
     {
         public string currentSessionFilePath;
@@ -29,25 +27,23 @@ namespace DnD_number_share_idea
         {
             if (!string.IsNullOrEmpty(currentSessionFilePath))
             {
-                // Access the MainViewModel instance from DataContext
                 var viewModel = this.DataContext as MainViewModel;
                 if (viewModel != null)
                 {
                     string json = JsonConvert.SerializeObject(viewModel.SessionData, Formatting.Indented);
                     File.WriteAllText(currentSessionFilePath, json);
                 }
-            }
+            }   
         }
 
         public MainWindow()
         {
             InitializeComponent();
             this.Closing += MainWindow_Closing;
-            // Initialize your main view model or session data here
             this.DataContext = new MainViewModel();
+            Main_grid.Background = System.Windows.Media.Brushes.Black;
         }
 
-        // Event handler for the Load button
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -63,7 +59,6 @@ namespace DnD_number_share_idea
             }
         }
 
-
         private void LoadSessionData(string filePath)
         {
             string json = File.ReadAllText(filePath);
@@ -73,19 +68,11 @@ namespace DnD_number_share_idea
             if (viewModel != null && sessionData != null)
             {
                 viewModel.SessionData = sessionData;
-
-                // Open the Openedtxt window here
                 Openedtxt openedTxtWindow = new Openedtxt();
                 openedTxtWindow.DataContext = viewModel;
                 openedTxtWindow.Show();
             }
         }
-
-
-
-
-
-
         
         private void BtnNew_Click(object sender, RoutedEventArgs e)
         {

@@ -10,11 +10,17 @@ namespace DnD_number_share_idea
     public class Item : INotifyPropertyChanged
     {
         private string _name;
+
         private string _description;
+        
         private string _quality;
+
         private string _type; 
+        
         private double _weight; 
+        
         private string _damage; 
+        
         private string _category;
 
         public string Name
@@ -40,6 +46,7 @@ namespace DnD_number_share_idea
             get => _type;
             set { _type = value; OnPropertyChanged(nameof(Type)); }
         }
+        
         public double Weight
         {
             get => _weight;

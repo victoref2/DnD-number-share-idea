@@ -30,11 +30,18 @@ namespace DnD_number_share_idea
             var newItem = new Item
             {
                 Name = NameTextBox.Text,
+
+                
                 Description = DescriptionTextBox.Text,
+                
                 Quality = QualityTextBox.Text,
+                
                 Type = TypeTextBox.Text,
+                
                 Weight = double.TryParse(WeightTextBox.Text, out double weight) ? weight : 0,
+                
                 Damage = DamageTextBox.Text,
+                
                 Category = CategoryTextBox.Text
             };
                         

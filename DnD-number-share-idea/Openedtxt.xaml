@@ -6,14 +6,14 @@
         xmlns:local="clr-namespace:DnD_number_share_idea"
         mc:Ignorable="d"
         Title="Dungeons and Dragons notes" Height="450" Width="800">
-    
-    <Grid>
-        <TabControl>
+
+    <Grid Background="Black">
+        <TabControl Background="Black">
             <TabItem Header="Players">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                         <Button Content="Add New Player" Margin="5" Padding="3" HorizontalAlignment="Left" Click="AddNewPlayer_Click"/>
-                        <ListView ItemsSource="{Binding Players}">
+                        <ListView ItemsSource="{Binding Players}" Background="Black">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel>
@@ -122,7 +122,7 @@
                         <ListView ItemsSource="{Binding Notes}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    
+
                                     <StackPanel>
 
                                         <TextBlock Text="Title:" FontWeight="Bold"/>
@@ -142,13 +142,13 @@
                 </ScrollViewer>
             </TabItem>
             <TabItem Header="Spells">
-                <Grid>
+                <Grid Background="Black">
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
                         <Button Content="Add New Spell" VerticalAlignment="Top" Click="AddNewSpell_Click"/>
                         <Button Content="Delete Selected Spell" VerticalAlignment="Top" Margin="10,0,0,0" Click="DeleteSelectedSpell_Click"/>
                     </StackPanel>
-                    <DataGrid x:Name="SpellsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding SessionData.Spells}" Margin="10,50,10,10">
-                        <DataGrid.Columns>
+                    <DataGrid x:Name="SpellsDataGrid" Background="Black" AutoGenerateColumns="False" ItemsSource="{Binding SessionData.Spells}" Margin="10,50,10,10">
+                        <DataGrid.Columns >
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Level" Binding="{Binding Level}"/>
                             <DataGridTextColumn Header="Casting Time" Binding="{Binding casting_time}"/>
@@ -163,12 +163,12 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Items">
-                <Grid>
+                <Grid Background="Black">
                     <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
                         <Button Content="Add New Item" VerticalAlignment="Top" Click="AddNewItem_Click"/>
                         <Button Content="Delete Selected Item" VerticalAlignment="Top" Margin="10,0,0,0" Click="DeleteSelectedItem_Click"/>
                     </StackPanel>
-                    <DataGrid x:Name="ItemsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding SessionData.Items}" Margin="10,50,10,10">
+                    <DataGrid Background="Black" x:Name="ItemsDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding SessionData.Items}" Margin="10,50,10,10">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>

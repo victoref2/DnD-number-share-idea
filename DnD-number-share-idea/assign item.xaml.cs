@@ -14,9 +14,7 @@ using System.Windows.Shapes;
 
 namespace DnD_number_share_idea
 {
-    /// <summary>
-    /// Interaction logic for assign_item.xaml
-    /// </summary>
+
     public partial class assign_item : Window
     {
         private readonly List<Player> _players;
@@ -25,15 +23,18 @@ namespace DnD_number_share_idea
         public assign_item(List<Player> players, Item selectedItem)
         {
             _players = players;
+            
             _selecteditem = selectedItem;
 
             PlayersListBox.ItemsSource = _players;
+            
             InitializeComponent();
         }
 
         private void AssignButton_Click(object sender, RoutedEventArgs e)
         {
             SelectedPlayer = PlayersListBox.SelectedItem as Player;
+            
             if (SelectedPlayer != null)
             {
                 SelectedPlayer.Itemlist.Add(_selecteditem);

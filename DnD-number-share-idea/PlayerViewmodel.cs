@@ -25,6 +25,7 @@ namespace DnD_number_share_idea
             }
 
             private ObservableCollection<NPC> _npcs = new ObservableCollection<NPC>();
+
             public ObservableCollection<NPC> NPCs
             {
                 get => _npcs;
@@ -36,6 +37,7 @@ namespace DnD_number_share_idea
             }
 
             private ObservableCollection<Item> _items = new ObservableCollection<Item>();
+
             public ObservableCollection<Item> Items
             {
                 get => _items;
@@ -43,6 +45,7 @@ namespace DnD_number_share_idea
             }   
 
             private ObservableCollection<Note> _notes = new ObservableCollection<Note>();
+
             public ObservableCollection<Note> Notes
             {
                 get => _notes;
@@ -52,6 +55,7 @@ namespace DnD_number_share_idea
                     OnPropertyChanged(nameof(Notes));
                 }
             }
+
             private ObservableCollection<Spell> _spells = new ObservableCollection<Spell>();
             public ObservableCollection<Spell> Spells
             {
@@ -87,6 +91,7 @@ namespace DnD_number_share_idea
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         public ObservableCollection<Spell> Spells => SessionData.Spells;
 
         public void AddSpell(Spell spell)
@@ -164,8 +169,6 @@ namespace DnD_number_share_idea
     public class PlayerViewModel
     {
         public ObservableCollection<Player> Players { get; set; }
-
-        
 
         public void AddPlayer(Player player)
         {
