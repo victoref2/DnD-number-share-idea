@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace DnD_number_share_idea
 {
+
     public class Item : INotifyPropertyChanged
     {
         private string _name;
