@@ -51,7 +51,7 @@ namespace DnD_number_share_idea
                 Filter = "JSON files (*.json)|*.json",
                 Title = "Load D&D Session"
             };
-
+            
             if (openFileDialog.ShowDialog() == true)
             {
                 currentSessionFilePath = openFileDialog.FileName;
@@ -88,7 +88,6 @@ namespace DnD_number_share_idea
                 currentSessionFilePath = saveFileDialog.FileName;
 
             }
-
         }
 
         private void CreateNewSession(string filePath)
