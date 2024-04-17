@@ -8,7 +8,7 @@
         Title="Dungeons and Dragons notes" Height="450" Width="800">
 
     <Grid Background="Black">
-        <TabControl Background="Black">
+        <TabControl>
             <TabItem Header="Players">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
